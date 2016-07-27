@@ -9,6 +9,23 @@ I don't really know how optimal this is and what is the right solution, who care
 
  - [`Quickcheck`](https://github.com/BurntSushi/quickcheck) implementation in Rust, cause property-based testing was such a good fit for this problem.
 
+# How to run
+
+Make sure to install rust and cargo first
+```sh
+brew install rust
+```
+
+Run it with cargo by providing numbers as command line arguments
+```sh
+cargo run 85 18
+```
+
+Test it with cargo
+```sh
+cargo test
+```
+
 # Things I like about this solution:
 
 ### Property-based testing. In fact, TDD with property-based testing. Having 1 single test, which coveres all the edge cases.
