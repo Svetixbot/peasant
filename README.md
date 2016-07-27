@@ -9,9 +9,9 @@ I don't really know how optimal this is and what is the right solution, who care
 
  - [`Quickcheck`](https://github.com/BurntSushi/quickcheck) implementation in Rust, cause property-based testing was such a good fit for this problem.
 
- # Things I like about this solution:
+# Things I like about this solution:
 
- - ### Property-based testing. In fact, TDD with property-based testing. Having 1 single test, which coveres all the edge cases.
+### Property-based testing. In fact, TDD with property-based testing. Having 1 single test, which coveres all the edge cases.
 
 ```rust
 #[test]
@@ -23,7 +23,7 @@ fn test_peasant() {
 }
 ```
 
-- ### Overflow and underflow safe solution.
+### Overflow and underflow safe solution.
 
 Obviosly multiplication of u32 numbers can be more than u32. For some reason Rust is using `Option` monad for wrapping the computation result. I would expect something like `Either`, but it is still better than exception in your face.
 
@@ -31,9 +31,12 @@ Obviosly multiplication of u32 numbers can be more than u32. For some reason Rus
 fn peasant(a: u32, b: u32) -> Option<u32> 
 ```
 
- # Struggles:
+### No mutation. 
+ But yeh, there is no tail recursion implemented in Rust yet, so it can fail with stack overflow. There is a [workaround](https://crates.io/crates/stacker).
 
- ### `Parametric polymorphism` in Rust?
+# Struggles:
+
+### `Parametric polymorphism` in Rust?
 
 I want to have this:
  ```rust
@@ -49,3 +52,6 @@ And if above thing is possible, what about quickcheck test? I want this quickche
 ```rust
 quickcheck(peasant_is_as_multiplication as fn<N: Num>(N, N) -> bool)
 ```
+
+### Stucture the code
+What is idiomatic way of structuring code and unit tests? I put tests and code into seprate files. I have created 2 modules: tests and peasant. The import of peasant module in test file is just `weird`. Am I doing it right?
