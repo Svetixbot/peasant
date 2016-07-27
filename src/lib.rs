@@ -1,7 +1,3 @@
-fn main() {
-    println!("Hello, world!");
-}
-
 pub mod peasant {
   pub fn peasant(a: u32, b: u32) -> Option<u32> {
     fn even(value: u32) -> bool {
