@@ -54,4 +54,4 @@ quickcheck(peasant_is_as_multiplication as fn<N: Num>(N, N) -> bool)
 ```
 
 ### Stucture the code
-What is idiomatic way of structuring code and unit tests? I put tests and code into seprate files. I have created 2 modules: tests and peasant. The import of peasant module in test file is just `weird`. Am I doing it right?
+What is idiomatic way of structuring code and unit tests? I put tests and code into seprate files. I have created 2 modules: tests and peasant. The import of peasant module in test file and main file are just `weird`. Am I doing it right?
