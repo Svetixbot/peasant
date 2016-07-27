@@ -1,0 +1,7 @@
+[package]
+name = "peasant"
+version = "0.1.0"
+authors = ["Svetlana Filimonova <sfilimonova@me.com>"]
+
+[dev-dependencies]
+quickcheck = "0.3.1"
