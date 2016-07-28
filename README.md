@@ -64,7 +64,20 @@ instead of this:
 fn peasant(a: u32, b: u32) -> Option<u32> {
 ```
 
-And if above thing is possible, what about quickcheck test? I want this quickcheck thing to be generic as well:
+And it is quite possible, it would look like below. But, it would not compile, cause One and Zero are `unstabled features` of Rust, which can't be enabled on stabled compiler version.
+
+```rust
+use std::ops::BitAnd;
+use std::cmp::PartialEq;
+use std::num::{One, Zero};
+  
+fn even<T>(value: T) -> bool 
+  where T: BitAnd<T, Output = T> + PartialEq + One + Zero {
+  value & T::one() == T::zero()
+}
+```
+
+However, if the above thing is possible, what about quickcheck test? I want this quickcheck thing to be generic as well:
 
 ```rust
 quickcheck(peasant_is_as_multiplication as fn<N: Num>(N, N) -> bool)
