@@ -85,3 +85,18 @@ quickcheck(peasant_is_as_multiplication as fn<N: Num>(N, N) -> bool)
 
 ### Stucture the code
 What is idiomatic way of structuring code and unit tests? I put tests and code into seprate files. I have created 2 modules: tests and peasant. The import of peasant module in test file and main file are just `weird`. Am I doing it right?
+
+### Also no list comprehension?
+It is such a nice syntax sugar for composing things:
+
+Imagine this:
+```rust
+  env::args().nth(index).and_then(|v| v.parse::<usize>().ok())
+```
+would look like this:
+```rust
+for {
+  number_from_cmd <- env::args().nth(index)
+  parsed          <- number_from_cmd.parse::<usize>().ok()
+} yield parsed
+```
