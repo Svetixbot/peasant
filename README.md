@@ -33,19 +33,19 @@ cargo test
 ```rust
 #[test]
 fn test_peasant() {
-  fn peasant_is_as_multiplication(a: u32, b:u32) -> bool {
+  fn peasant_is_as_multiplication(a: usize, b:usize) -> bool {
     a.checked_mul(b) == peasant(a, b)
   }
-  quickcheck(peasant_is_as_multiplication as fn(u32, u32) -> bool)
+  quickcheck(peasant_is_as_multiplication as fn(usize, usize) -> bool)
 }
 ```
 
 ### Overflow and underflow safe solution.
 
-Obviosly multiplication of u32 numbers can be more than u32. For some reason Rust is using `Option` monad for wrapping the computation result. I would expect something like `Either`, but it is still better than exception in your face.
+Obviosly multiplication of usize numbers can be more than usize. For some reason Rust is using `Option` monad for wrapping the computation result. I would expect something like `Either`, but it is still better than exception in your face.
 
 ```rust
-fn peasant(a: u32, b: u32) -> Option<u32> 
+fn peasant(a: usize, b: usize) -> Option<usize> 
 ```
 
 ### No mutation. 
@@ -61,10 +61,10 @@ fn peasant<N: Num>(a: N, b: N) -> Option<N> {
 ```
 instead of this:
  ```rust
-fn peasant(a: u32, b: u32) -> Option<u32> {
+fn peasant(a: usize, b: usize) -> Option<usize> {
 ```
 
-And it is quite possible, it would look like below. But, it would not compile, cause One and Zero are `unstabled features` of Rust, which can't be enabled on stabled compiler version.
+And it is quite possible, it would look like below. But, it would not compile, cause One and Zero are `unstabled features` of Rust, which can't be enabled on a stable compiler version. And on top of it, making your code to be generic in rust just sucks the whole joy out of the process. #nofuckingwayimdoingit
 
 ```rust
 use std::ops::BitAnd;

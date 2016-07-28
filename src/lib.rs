@@ -1,10 +1,10 @@
 pub mod peasant {
-  pub fn peasant(a: u32, b: u32) -> Option<u32> {
-    fn even(value: u32) -> bool {
+  pub fn peasant(a: usize, b: usize) -> Option<usize> {
+    fn even(value: usize) -> bool {
       value & 1 == 0
     }
 
-    fn run(a: u32, b: u32) -> Option<u32> {
+    fn run(a: usize, b: usize) -> Option<usize> {
       match (a, b) {
         (0, _) | (_, 0) => Some(0),
         (1, _)          => Some(b),
