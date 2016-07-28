@@ -11,10 +11,10 @@ fn main() {
         use peasant::peasant;
         match peasant::peasant(first,second) {
           Some(result) => println!("The result of peasanting {} and {} is {}", 
-                              first.to_string(), second.to_string(), result.to_string()),
+                              first, second, result),
           None         => println!("Ну не смогла")
         }
     }
-    _               => println!("Please provide 2 valid numbers to peasant them together, max value is {}", std::u32::MAX.to_string())
+    _               => println!("Please provide 2 valid numbers to peasant them together, max value is {}", std::u32::MAX)
   }
 }
